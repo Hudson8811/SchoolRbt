@@ -114,6 +114,17 @@ a:hover{
     transition: .3s;
     &:hover{
         box-shadow: 0 0 0 0 rgba(0, 163, 238, 0);
+
+        .button__icon{
+            right: 30px;
+        }
+
+        .button-wrap:after{
+            height: 150px;
+            width: 150px;
+            opacity: 0;
+        }
+        
     }
     &--theme-blue{
 
@@ -132,7 +143,7 @@ a:hover{
 
           
     }
-
+    
       
     &--font-big{
         font-size: 16px;
@@ -149,8 +160,12 @@ a:hover{
         top: 50%;
         right: 16px;
         z-index: 10;
-
+        
+        margin-top: 1px;
+        
         fill: $white;
+
+        transition: .3s;
         transform: translate(0,-50%);
 
         &--big{
@@ -194,6 +209,10 @@ a:hover{
 
         border-radius: 50%;
         background-color:rgba($white, .1);
+
+        transition: .4s;
+
+       
         
 
     }
@@ -209,7 +228,7 @@ a:hover{
         border-radius: 50%;
         background-color:rgba($white, .1);
         
-
+        transition: .4s;
     }
     
     
@@ -365,8 +384,8 @@ body{
            z-index: 9500;
            top: 100%;
            left: 0;
+           transform: translateY(-200%);
 
-           display: none;
            
            width: 100%;
            box-sizing: border-box;
@@ -377,6 +396,10 @@ body{
            box-shadow: 0px 18px 24px 0px rgba(143, 179, 212, 0.17);
 
            opacity: 1;
+
+           &.active{
+               transform: translateY(0);
+           }
 
            
            
@@ -580,17 +603,17 @@ body{
         &:hover{
             color: $blue;
         }
-        &.active:after{
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
+        // &.active:after{
+        //     content: '';
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: 0;
 
-            height: 3px;
-            width: 100%;
+        //     height: 3px;
+        //     width: 100%;
 
-            background-color: #089ee7;
-        }
+        //     background-color: #089ee7;
+        // }
         @include for-md{
            font-size: 16px ;
            line-height: 20px;
@@ -629,16 +652,16 @@ body{
             color: $blue;
         }
 
-        &.active:before{
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 0;
-            height: 3px;
-            width: 100%;
-            background-color: $blue;
+        // &.active:before{
+        //     content: '';
+        //     position: absolute;
+        //     top: -1px;
+        //     left: 0;
+        //     height: 3px;
+        //     width: 100%;
+        //     background-color: $blue;
 
-        }
+        // }
 
     }
 }
@@ -705,6 +728,12 @@ body{
         line-height: 21px;
         color: $white;
         font-weight: 500;
+
+        @include for-xl{
+            br{
+                display: none;
+            }
+        }
 
         @include for-tiny-tablet{
             text-align: center;
@@ -854,6 +883,7 @@ body{
 }
 .calc{
     padding-top: 93px;
+    padding-bottom: 5px;
 
     @include for-md{
         padding-top: 30px;
@@ -864,6 +894,7 @@ body{
         padding: 59px 67px 45px;
         margin-top: 37px;
 
+        border-radius: 5px;;
         border: 2px dashed $blue;
 
         @include for-sm{
@@ -1193,28 +1224,53 @@ body{
         margin-top: 29px;
     }
     &__item{
+        position: relative;
+
         height: 100%;
         padding: 58px 43px 51px 67px;
         box-sizing: border-box;
 
+        color: $white;
+
+        
+        border: 2px solid $blue;
+        border-radius: 5px;
+        
+        transition: .3s;
+        
+
+        &:before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            
+            height: 100%;
+            width: 100%;
+            background: url(../images/backgrounds/tarif.jpg) no-repeat center center;
+            background-size: cover;
+
+        }
+
         @include for-sm{
             padding: 30px 20px;
         }
-        &--dashed{
+        
+        &:hover{
             color: $black;
 
             border: 2px dashed $blue;
             background-color: $white;
             
-        }
-        &--blue{
-            color: $white;
 
-            background: url(../images/backgrounds/tarif.jpg) no-repeat center center;
-            background-size: cover;
-            border: 2px solid $blue;
-            
+            .program__icon{
+                fill: $blue;
+            }
         }
+            
+        
+        
     }
     &__item-title{
         font-size: 22px;
@@ -1260,12 +1316,8 @@ body{
         flex-shrink: 0;
         margin-right: 11px;
 
-        &--blue{
-            fill: $blue;
-        }
-        &--white{
-            fill: $white;
-        }
+       
+       fill: $white;
     }
     &__item-bottom{
         margin-top: 39px;
@@ -1345,6 +1397,7 @@ body{
         @include DemiF();
 
         border: 2px dashed $blue;
+        border-radius: 5px;;
 
         transition: .3s;
 

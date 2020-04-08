@@ -56,10 +56,12 @@ $(function(){
 
 $(".burger").click(function(){
   $(".burger").toggleClass("active");
-  $(".header__menu").slideToggle(300);
   $(".header__menu").toggleClass("active");
 });
-
+$(".program__item").hover(function(){
+ $(this).find(".program__button").toggleClass("button--theme-orange").toggleClass("button--theme-blue");
+ $(this).find(".program__button-wrap").toggleClass("button-wrap--theme-orange").toggleClass("button-wrap--theme-blue");
+});
 
 
 

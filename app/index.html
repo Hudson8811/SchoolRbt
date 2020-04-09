@@ -295,7 +295,7 @@
                                 <div class="calc__left-side">
                                     <div class="calc__left-side-row">
                                         <div class="calc__item-container">
-                                            <input class="calc__item inputbox"   type="text" placeholder="Кол-во рабочих часов 150">
+                                            <input class="calc__item inputbox work_hours" value="220"  type="text" placeholder="Кол-во рабочих часов 150">
                                         </div>
                                         <div class="calc__item-container">
                                             <input class="calc__item inputbox numbox"   type="text" placeholder="Ваш телефон">
@@ -312,12 +312,12 @@
                                             <input class="calc__item inputbox"   type="text" placeholder="Ваше имя">
                                         </div>
                                         <div class="calc__item-container">
-                                            <input class="calc__item inputbox"   type="text" placeholder="Стаж работы">
+                                            <input class="calc__item inputbox work_experience"   type="text" placeholder="Стаж работы">
                                         </div>
                                         <div class="calc__item-container">
                                             <button class="button calc__button   button--theme-blue" >
                                                 <span class="button-wrap calc__button-wrap button-wrap--theme-blue">
-                                                <span class="button__text">
+                                                <span class="button__text calculate_btn">
                                                     Произвести расчёт
                                                 </span>
                                                  <svg class="icon  button__icon button__icon--tiny icon-next"><use xlink:href="#icon-next"></use></svg>
@@ -332,7 +332,7 @@
                                             Ваш примерный самостоятельный заработок:
                                         </div>
                                         <div class="calc__option-value calc__option-value--grey">
-                                            22 650 Руб/Мес.
+                                            <span class="independent_salary">22 650</span> Руб/Мес.
                                         </div>
                                     </div>
                                     <div class="calc__option-item">
@@ -340,7 +340,7 @@
                                             Ваш стабильный заработок в нашей компании:
                                         </div>
                                         <div class="calc__option-value calc__option-value--red">
-                                            44 800 Руб/Мес.
+                                            <span class="company_salary">44 800</span> Руб/Мес.
                                         </div>
                                     </div>
                                 </div>
@@ -1037,6 +1037,5 @@
            
         }
     </script>
-
 </body>
 </html>

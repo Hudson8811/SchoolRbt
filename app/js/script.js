@@ -1,7 +1,7 @@
   $(window).on('resize', function(event){
     windowSize = $(window).width(); 
     if(windowSize < 991){
-      $('.header__menu').hide();
+
       $('.header').removeClass("js-fixed");
       $('.burger').removeClass("active");
     };
@@ -11,8 +11,6 @@ $(document).ready(function() {
     $('select').niceSelect();
   });
   $(".numbox").mask("+7 (999) 999-99-99");
-
-  
   $(window).scroll(function() {
     windowSize = $(window).width(); 
     if(windowSize > 991){
@@ -24,39 +22,28 @@ $(document).ready(function() {
 
     }  else{
       $('.header__main-menu').hide();
-      $('.header__main-menu').css("display","none");
         $('.header').removeClass("js-fixed");
     }
   }
 
 });
-
-
-
-$(function(){
-  $('a.scroll-link[href^="#"]').on('click', function(event) {
-    // отменяем стандартное действие
-    event.preventDefault();
-    
-    var sc = $(this).attr("href"),
-        dn = $(sc).offset().top;
-    /*
-    * sc - в переменную заносим информацию о том, к какому блоку надо перейти
-    * dn - определяем положение блока на странице
-    */
-    
-    $('html, body').animate({scrollTop: dn}, 1000);
-    
-    /*
-    * 1000 скорость перехода в миллисекундах
-    */
+$(".program__button").click(function(){
+  $('#input-program').val(".");
+    var stock = $(this).next().val();
+    $('#input-program').val(stock); 
+});
+$(document).ready(function() {
+  $("a.scroll-link").click(function () {
+    elementClick = $(this).attr("href")
+    destination = $(elementClick).offset().top;
+    $("html:not(:animated),body:not(:animated)").animate({scrollTop: destination - 100}, 1100);
+    return false;
   });
 });
-
-
 $(".burger").click(function(){
   $(".burger").toggleClass("active");
   $(".header__menu").toggleClass("active");
+
 });
 $(".program__item").hover(function(){
  $(this).find(".program__button").toggleClass("button--theme-orange").toggleClass("button--theme-blue");
@@ -68,15 +55,12 @@ $(".program__item").hover(function(){
 $('.header .main-menu__link').click(function(){
   var windowSize = $(window).width(); 
   if(windowSize < 992){
-    $(".header__menu").slideToggle(300);
+    // $(".header__menu").slideToggle(300);
     $(".header__menu").removeClass("active");
     $(".burger").removeClass("active");
   }
  
 });
-
-
-
   function falidator(item) {
     check = true;
     $(item).find('input').each(function() {
@@ -105,7 +89,6 @@ $("#form1").submit(function(){
       }
   });
   
- 
   $('#thansk').modal();
   /*$('.action_block .inputbox').removeClass("not-empty");*/
   $('#form1').trigger("reset");
@@ -123,8 +106,6 @@ $("#form1").submit(function(){
         
         }
     });
-    
-   
     $('#thansk').modal();
     /*$('.action_block .inputbox').removeClass("not-empty");*/
     $('#call-form2').trigger("reset");
@@ -207,7 +188,7 @@ function calculate(){
   if(!work_hours || !isNumeric(work_hours) || work_hours <=0)
   throw new Error("Введите правильное значение рабочих часов!");
   if(!work_experience || !isNumeric(work_experience|| work_experience <= 0))
-  throw new Error("Введите правильное значение стажа!");
+  throw new Error("Введите стаж!");
   
   let salary = work_hours * MONEY_PER_HOUR; //денег в месяц
   for(let i=0; i<work_experience; i++){
@@ -217,7 +198,6 @@ function calculate(){
   }
   salary *= month_coef;
   month_coef = ((month_coef * 100 - 1)/100).toFixed(2); // JavaScript искажает дробные расчеты
-  console.log(month_coef);
   }
   
   document.querySelector(".independent_salary").innerText = Math.floor((salary * 0.6));

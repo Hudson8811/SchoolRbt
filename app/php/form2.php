@@ -7,7 +7,7 @@ require 'Exception.php';
 // Переменные, которые отправляет пользователь
 $name = $_POST['name'];
 $telephone = $_POST['phone'];
-$reviews = $_POST['textarea__review'];
+$program = $_POST['program'];
 
 
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -31,8 +31,8 @@ try {
 
     $mail->Subject = 'Заявка ';
     $mail->Body    = "<b>Имя:</b> $name <br>
-        <b>Телефон:</b> $phone<br>
-        <b>Отзыв:</b> $reviews<br>";
+        <b>Телефон:</b> $telephone<br>
+        <b>Программа:</b> $program<br>";
 
 
     if ($mail->send()) {

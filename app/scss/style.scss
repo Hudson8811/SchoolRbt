@@ -863,6 +863,7 @@ body{
         border-radius: 5px;
     }
     &__button{
+        height: 49px;
         max-width: 210px;
         width: 100%;
 
@@ -1121,6 +1122,7 @@ body{
     &__button{
         max-width: 258px;
         width: 100%;
+        height: 49px;
 
         @include for-sm{
             max-width: 500px;
@@ -1141,6 +1143,10 @@ body{
 }
 .about{
     padding: 77px 0 35px;
+
+    @include for-md{
+        padding: 30px 0;
+    }
     &__image-container{
         height: 393px;
         
@@ -1220,6 +1226,10 @@ body{
 }
 .program{
     padding: 62px 0 53px;
+
+    @include for-md{
+        padding: 30px 0;
+    }
     &__row{
         margin-top: 29px;
     }

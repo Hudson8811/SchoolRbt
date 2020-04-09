@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>Document</title>
+    <title>Школа РБТ. Ремонт бытовой техники</title>
 </head>
 <body>
     <!--start sprite-->
@@ -301,10 +301,10 @@
                                         </div>
                                         <div class="calc__item-container">
                                             <select class="calc__select">
-                                                <option data-display="Выберите город"></option>
-                                                <option >Москва</option>
-                                                <option >Санкт-Петербург</option>
-                                                <option >Казань</option>
+                                                <option value="" data-display="Выберите город">Выберите</option>
+                                                <option value="" >Москва</option>
+                                                <option value="" >Санкт-Петербург</option>
+                                                <option value="" >Казань</option>
                                             </select>
                                         </div>
                                         <div class="calc__item-container">
@@ -551,6 +551,7 @@
                                          <svg class="icon  button__icon button__icon--tiny icon-next"><use xlink:href="#icon-next"></use></svg>
                                         </span>
                                      </button>
+                                     <input type="text" value="Ремонт стиральных и посудомоечных машин" class="program__input d-none">
                                 </div>
 
                             </div>
@@ -588,6 +589,7 @@
                                          <svg class="icon  button__icon button__icon--tiny icon-next"><use xlink:href="#icon-next"></use></svg>
                                         </span>
                                      </button>
+                                     <input type="text" value="  Ремонт холодильников и ионов холодильных камер" class="program__input d-none">
                                 </div>
 
                             </div>
@@ -789,6 +791,47 @@
                          <svg class="icon  button__icon button__icon--big icon-icon"><use xlink:href="#icon-icon"></use></svg>
                         </span>
                      </button>
+                </form>
+                <p class="modal__text">
+                    Нажимая кнопку “Перезвоните мне” Вы соглашаетесь на <br>
+                    обработку данных.
+                </p>
+                <button type="button" class="modal__close close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                  </button>
+            </div>
+             
+             
+            
+           
+           
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="call-modal2" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal__body">
+                <h2 class="modal__title">
+                    Связь с нами
+                </h2>
+                <p class="modal__subtitle">
+                    Заполните форму ниже и мы перезвоним Вам через 5 минут
+                </p>
+                <form class="modal__form" id="program-modal" action="php/form2.php" method="POST">
+                    <span class="modal__input-container">
+                        <input class="modal__input inputbox form-control" type="text" name="name"  placeholder="Ваше имя" required>
+                    </span>
+                    <span class="modal__input-container">
+                        <input class="modal__input inputbox numbox form-control" name="phone" type="text"  placeholder="Ваш телефон" required>
+                    </span>
+                    <button class="button modal__button   button--theme-blue" >
+                        <span class="button-wrap modal__button-wrap button-wrap--theme-blue">
+                         Связаться с нами
+                         <svg class="icon  button__icon button__icon--big icon-icon"><use xlink:href="#icon-icon"></use></svg>
+                        </span>
+                     </button>
+                     <input type="text" class="d-none" name="program" value="" id="input-program"> 
                 </form>
                 <p class="modal__text">
                     Нажимая кнопку “Перезвоните мне” Вы соглашаетесь на <br>

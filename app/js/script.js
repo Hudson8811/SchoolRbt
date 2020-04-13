@@ -175,14 +175,60 @@ $("#form1").submit(function(){
   });
 
 
+
+function with_endings(formats, e){
+  try{
+   if(!formats||!formats.length) throw new Error("Неправильные параметры!");
+   if(!e.target.value) return;
+   let result  = parseInt(e.target.value);
+   if(!result) {
+     e.target.value = "";
+     return;
+   };
+   result = result.toString();
+
+   switch(+result[result.length-1]){
+     case 0:
+     case 5:
+     case 6:
+     case 7:
+     case 8:
+     case 9:
+       result+=` ${formats[0]}` ;
+       break;
+     case 2:
+     case 3:
+     case 4:
+       result+= ` ${formats[1]}`;
+       break;
+     case 1:
+       result+= ` ${formats[2]}`;
+       break;
+   }
+   e.target.value = result;
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+
+//часы
+document.querySelector(".work_hours").addEventListener("blur", with_endings.bind(this,["часов","часа", "час"]));
+
+//месяцы
+document.querySelector(".work_experience").addEventListener("blur", with_endings.bind(this,["месяцев","месяца", "месяц"]));
+
+
+
+
   const MONEY_PER_HOUR = 227; //денег в час
 
 //рассчет
 function calculate(){
   try{
   let month_coef = 1.25;
-  const work_hours = document.querySelector(".work_hours").value;
-  const work_experience = document.querySelector(".work_experience").value; //опыт работы в месяцах
+  const work_hours =  parseInt(document.querySelector(".work_hours").value);
+  const work_experience = parseInt(document.querySelector(".work_experience").value); //опыт работы в месяцах
   
   //обработаем возможные ошибки
   if(!work_hours || !isNumeric(work_hours) || work_hours <=0)
@@ -215,4 +261,57 @@ document.querySelector(".calculate_btn").addEventListener("click", calculate);
 function isNumeric(n){
     return !isNaN(parseFloat(n))&&isFinite(n);
 }
+
+var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", 
+            "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+             
+var myDate = new Date();
+// устанавливаем своё начальное значение даты в формате день/месяц/год январь начинается с 00. 03 - это апрель
+var date_period = 6;
+
+// Установленная дата
+myDate.setDate(15);
+myDate.setMonth(03);
+myDate.setYear(2020);
+
+// Локальная дата
+let Local_date = new Date()
+
+if (myDate.getDate() == Local_date.getDate()) {
+  var new_date = myDate.getDate()+ date_period;
+  console.log(1);
+} else if (myDate.getDate() > Local_date.getDate()) {
+  var new_date = myDate.getDate() + Local_date.getDay() + date_period;
+  console.log(2);
+} else if (myDate.getDate() < Local_date.getDate()) {
+  var new_date = Local_date.getDate() + date_period;
+  console.log(3);
+}
+
+
+// устанавливаем новую дату
+Local_date.setDate(new_date);
+// На главный экран
+var fullDate = Local_date.getDate() + " " + months[Local_date.getMonth()];
+
+
+// преобразования даты дня и месяца в формат 0.0
+var month_new = Local_date.getMonth() + 1;
+if (Number(month_new) < 10) {
+    monthTomorrow = '0' + month_new;
+} else {
+  monthTomorrow = month_new;
+}
+if (Number(Local_date.getDate()) < 10) {
+    dayTomorrow = '0' + Local_date.getDate();
+} else {
+  dayTomorrow = Local_date.getDate();
+}
+
+var fullDate2 = dayTomorrow + "." + monthTomorrow;
+
+$('#date-change').html(fullDate);
+$('#nearest-date').html(fullDate2);
+
+
 

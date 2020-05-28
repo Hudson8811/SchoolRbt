@@ -2034,6 +2034,22 @@ body {
   }
 }
 
+.footer__desc {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  color: #8b8b8b;
+}
+
+@media (max-width: 991px) {
+  .footer__desc {
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
 .footer__button {
   width: 100%;
   max-width: 165px;
